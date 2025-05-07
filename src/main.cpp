@@ -477,6 +477,7 @@ PYBIND11_MODULE(_pywhispercpp, m) {
                                                             "Cols: n_vocab");
 
 
+    m.def("whisper_token_to_str", &whisper_token_to_str_wrapper, "whisper_token_to_str");
     m.def("whisper_token_eot", &whisper_token_eot_wrapper, "whisper_token_eot");
     m.def("whisper_token_sot", &whisper_token_sot_wrapper, "whisper_token_sot");
     m.def("whisper_token_prev", &whisper_token_prev_wrapper);
