@@ -1,6 +1,6 @@
 site_name: PyWhisperCpp
-repo_url: https://github.com/abdeladim-s/pywhispercpp
-repo_name: abdeladim-s/pywhispercpp
+repo_url: https://github.com/absadiki/pywhispercpp
+repo_name: absadiki/pywhispercpp
 theme:
   name: material
   language: en
@@ -28,7 +28,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/abdeladim-s/pywhispercpp
+      link: https://github.com/absadiki/pywhispercpp
 
 markdown_extensions:
   - pymdownx.inlinehilite
@@ -49,7 +49,7 @@ markdown_extensions:
       pygments_lang_class: true
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/abdeladim-s"  target="_blank" rel="noopener">abdeladim-s</a>
+  &copy; 2023 <a href="https://github.com/absadiki"  target="_blank" rel="noopener">absadiki</a>
 
 plugins:
   - search
