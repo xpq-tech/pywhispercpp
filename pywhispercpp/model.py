@@ -100,7 +100,7 @@ class Model:
                    media: Union[str, np.ndarray],
                    n_processors: int = None,
                    new_segment_callback: Callable[[Segment], None] = None,
-                   **params) -> List[Segment]:
+                   **params) -> Tuple[List[Segment], str]:
         """
         Transcribes the media provided as input and returns list of `Segment` objects.
         Accepts a media_file path (audio/video) or a raw numpy array.
@@ -131,10 +131,11 @@ class Model:
         # run inference
         start_time = time()
         logger.info("Transcribing ...")
-        res = self._transcribe(audio, n_processors=n_processors)
+        res, lang_id = self._transcribe(audio, n_processors=n_processors)
+        lang = self.available_languages()[lang_id]
         end_time = time()
         logger.info(f"Inference time: {end_time - start_time:.3f} s")
-        return res
+        return res, lang
 
     @staticmethod
     def _get_segments(ctx, start: int, end: int) -> List[Segment]:
@@ -254,7 +255,7 @@ class Model:
             pw.whisper_full(self._ctx, self._params, audio, audio.size)
         n = pw.whisper_full_n_segments(self._ctx)
         res = Model._get_segments(self._ctx, 0, n)
-        return res
+        return res, pw.whisper_full_lang_id(self._ctx)
 
     @staticmethod
     def __call_new_segment_callback(ctx, n_new, user_data) -> None:
